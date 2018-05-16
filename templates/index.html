@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Image Classifier</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/skeleton.css') }}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="one-half column" style="margin-top: 25%">
+                <h4>Image Classifier</h4>
+
+                <p>Select image to classify:</p>
+                <input type="file" id="exampleFile">
+                <br>
+                <input class="button-primary" type="button" value="Predict" id="predict_btn" />
+
+                <img id="selected_image" src="static/images/home.jpg">
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#predict_btn").on("click",function(){
+              var fullPath = $("#exampleFile").val();    
+              var filename = fullPath.replace(/^.*[\\\/]/, '');
+    
+              var animalName = filename;
+              window.location.href = '/predict/'+animalName;                           
+            })
+        })
+    </script>
+
+</body>
+
+</html>
